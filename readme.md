@@ -1,1 +1,1 @@
-Poney Slack command app
+Slack command app
