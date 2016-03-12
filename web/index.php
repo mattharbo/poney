@@ -7,15 +7,6 @@ $token = $_POST['token'];
 $responseurl=$_POST["response_url"];
 $username=$_POST["user_name"];
 
-// # Check the token and make sure the request is from our team 
-//   if($token != 'iuI46C6PFcsuBcBEIcScZ4UZ'){ #replace this with the token from your slash command configuration page
-    
-//     $msg = "The token for the slash command doesn't match. You are not able to use the service.";
-//     die($msg);
-//     echo $msg;
-
-//   }else{
-
       $jsonData = [
             "response_type" => "in_channel",//if you want to set this message to private
             "text" => "@channel : ".$username." has been poneyhacked :smirk: ".$text,
@@ -52,11 +43,5 @@ $username=$_POST["user_name"];
       fclose($fp);
 
       #2 if file existing then update it
-
-  }else{
-    echo ":face_with_head_bandage: Error in message";
-  }
-
-// }//End token validation
 
 ?>
