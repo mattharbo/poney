@@ -1,13 +1,5 @@
 <?php
 
-/*
-
-REQUIREMENTS
-* A custom slash command on a Slack team
-* A web server running PHP5 with cURL enabled
-
-*/
-
 # Grab some of the values from the slash command, create vars for post back to Slack
 $command = $_POST['command'];
 $text = $_POST['text'];
@@ -29,7 +21,6 @@ $username=$_POST["user_name"];
             "text" => "@channel : ".$username." has been poneyhacked :smirk: ".$text,
             'attachments' => [[
               'text' => 'Text 1',
-              'text' => 'Text 2',
               'color' => '#F35A00'  
           ]]//end attachments
       ];
