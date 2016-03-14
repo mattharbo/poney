@@ -1,1 +1,1 @@
-{"users":[]}
+{"users":[{"id":"x","username":"matthieu","numberofhack":2,"hackdetails":[{"date":"20160314_02:28:29","associatedtext":"x"},{"date":"20160314_02:29:33","associatedtext":"blabla"}]},{"id":"x","username":"matt","numberofhack":"1","hackdetails":[{"date":"20160314_02:29:10","associatedtext":"x"}]},{"id":"x","username":"bla","numberofhack":2,"hackdetails":[{"date":"20160314_02:29:25","associatedtext":"x"},{"date":"20160314_02:29:28","associatedtext":"blabla"}]}]}

@@ -22,12 +22,16 @@ if ($tocomplete==1) {
 	$data['users'][$match]['numberofhack']=$data['users'][$match]['numberofhack']+1;
 	array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=>'blabla'));
 }else{
-	array_push($data['users'], array('id' => 'new id', 'username' => 'test username', 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> 'test date', 'associatedtext' => 'test associated text'))));
+	array_push($data['users'], array('id' => 'x', 'username' => $newhackedname, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => 'x'))));
 }
 
-foreach ($data['users'] as $user) {
-	$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
-}
+// print_r($data['users']);
+
+foreach ($data['users'] as $user2) {
+		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
+	}
+
+echo $concattext;
 
 unset($file);//prevent memory leaks for large json.
 //save the file
