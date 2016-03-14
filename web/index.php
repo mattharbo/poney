@@ -32,8 +32,6 @@ $todaysdate=date('Ymd_h:i:s');
 		array_push($data['users'], array('id' => $userid, 'username' => $username, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => $text))));
 	}
 
-	print_r($data['users']);
-
 	unset($file);//prevent memory leaks for large json.
 	//save the file
 	file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
