@@ -35,12 +35,13 @@ $todaysdate=date('Ymd_h:i:s');
 		array_push($data['users'], array('id' => $userid, 'username' => $username, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => $text))));
 	}
 
-	print_r($data['users']);
+	foreach ($data['users'] as $user) {
+		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
+	}
 
-	// unset($file);//prevent memory leaks for large json.
-	//save the file
-	file_put_contents($stats,json_encode($data));
-	// unset($data);//release memory
+	unset($file);//prevent memory leaks for large json.
+	file_put_contents($stats,json_encode($data));//save the file
+	unset($data);//release memory
 
 	$jsonData = [
 		"response_type" => "in_channel",//if you want to set this message to private
