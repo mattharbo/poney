@@ -41,7 +41,7 @@ $todaysdate=date('Ymd_h:i:s');
 		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
 	}
 
-	echo "results are :".$concattext;
+	echo $data['users'];
 
 	$jsonData = [
 		"response_type" => "in_channel",//if you want to set this message to private
