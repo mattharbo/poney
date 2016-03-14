@@ -41,16 +41,16 @@ $todaysdate=date('Ymd_h:i:s');
 		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
 	}
 
-	echo $concattext;
+	echo "results are :".$concattext;
 
 	$jsonData = [
-	"response_type" => "in_channel",//if you want to set this message to private
-	"text" => "@channel : ".$username." has been *poneyhacked* :smirk: ".$text,
-	'attachments' => [[
-		'text' => $concattext,
-		'color' => '#0062CC'  
-	]]//end attachments
-];
+		"response_type" => "in_channel",//if you want to set this message to private
+		"text" => "@channel : ".$username." has been *poneyhacked* :smirk: ".$text,
+		'attachments' => [[
+			'text' => $concattext,
+			'color' => '#0062CC'  
+		]]//end attachments
+	];
 
 
 ########################################################################################################################################################
