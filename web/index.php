@@ -17,7 +17,7 @@ $tocomplete = 0;
 $index = 0;
 $todaysdate=date('Ymd_h:i:s');
 
-if ($username=="stat") {
+if ($text=="stat") {
 	foreach ($data['users'] as $user) {
 		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
 	}
