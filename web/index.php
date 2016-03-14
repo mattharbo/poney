@@ -17,18 +17,6 @@ $tocomplete = 0;
 $index = 0;
 $todaysdate=date('Ymd_h:i:s');
 
-if ($text=="stat") {
-	foreach ($data['users'] as $user) {
-		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
-	}
-
-	$jsonData = [
-	"text" => "Here is the standing",
-	'attachments' => [[
-		'text' => $concattext,
-		'color' => '#0062CC'  
-	]]//end attachments
-}else{
 	foreach ($data['users'] as $user) {
 		++$index;
 		if ($user['username']==$username){
@@ -49,15 +37,19 @@ if ($text=="stat") {
 	file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
 	unset($data);//release memory
 
+	foreach ($data['users'] as $user) {
+		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
+	}
+
 	$jsonData = [
 	"response_type" => "in_channel",//if you want to set this message to private
 	"text" => "@channel : ".$username." has been *poneyhacked* :smirk: ".$text,
 	'attachments' => [[
-		'text' => 'User table :champagne:',
-		'color' => '#F35A00'  
+		'text' => $concattext,
+		'color' => '#0062CC'  
 	]]//end attachments
 ];
-}
+
 
 ########################################################################################################################################################
 
