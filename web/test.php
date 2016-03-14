@@ -2,7 +2,7 @@
 
 $newhackedname="MHA";
 
-$stats = "./hnG9yd4m1yl4nZM0SZjz3uzl.json";
+$stats = "./test.json";
 
 $json = file_get_contents($stats); 
 $data = json_decode($json,true);
@@ -25,9 +25,7 @@ if ($tocomplete==1) {
 	array_push($data['users'], array('id' => 'x', 'username' => $newhackedname, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => 'x'))));
 }
 
-// print_r($data['users']);
-
-echo $data['users'][0]['username'];
+print_r($data['users']);
 
 // foreach ($data['users'] as $user2) {
 // 		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
@@ -37,7 +35,7 @@ echo $data['users'][0]['username'];
 
 unset($file);//prevent memory leaks for large json.
 //save the file
-file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
+file_put_contents('./test.json',json_encode($data));
 unset($data);//release memory
 
 ?>

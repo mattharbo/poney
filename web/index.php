@@ -36,7 +36,7 @@ $todaysdate=date('Ymd_h:i:s');
 
 	// unset($file);//prevent memory leaks for large json.
 	//save the file
-	file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
+	file_put_contents($stats,json_encode($data));
 	// unset($data);//release memory
 
 	$jsonData = [
