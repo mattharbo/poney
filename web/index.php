@@ -15,31 +15,41 @@ $json = file_get_contents($stats);
 $data = json_decode($json,true);
 $tocomplete = 0;
 $index = 0;
-$todaysdate=date('Ymd');
+$todaysdate=date('Ymd_h:i:s');
 
-foreach ($data['users'] as $user) {
-	++$index;
-	if ($user['username']==$username){
-		++$tocomplete;
-		$match=$index-1;
+if ($username=="stat") {
+	foreach ($data['users'] as $user) {
+		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
 	}
-}
 
-if ($tocomplete==1) {
-	$data['users'][$match]['numberofhack']=$data['users'][$match]['numberofhack']+1;
-	array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=> $text));
+	$jsonData = [
+	"text" => "Here is the standing",
+	'attachments' => [[
+		'text' => $concattext,
+		'color' => '#0062CC'  
+	]]//end attachments
 }else{
-	array_push($data['users'], array('id' => $userid, 'username' => $username, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => $text))));
-}
+	foreach ($data['users'] as $user) {
+		++$index;
+		if ($user['username']==$username){
+			++$tocomplete;
+			$match=$index-1;
+		}
+	}
 
-unset($file);//prevent memory leaks for large json.
-//save the file
-file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
-unset($data);//release memory
+	if ($tocomplete==1) {
+		$data['users'][$match]['numberofhack']=$data['users'][$match]['numberofhack']+1;
+		array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=> $text));
+	}else{
+		array_push($data['users'], array('id' => $userid, 'username' => $username, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => $text))));
+	}
 
-########################################################################################################################################################
+	unset($file);//prevent memory leaks for large json.
+	//save the file
+	file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
+	unset($data);//release memory
 
-$jsonData = [
+	$jsonData = [
 	"response_type" => "in_channel",//if you want to set this message to private
 	"text" => "@channel : ".$username." has been *poneyhacked* :smirk: ".$text,
 	'attachments' => [[
@@ -47,6 +57,13 @@ $jsonData = [
 		'color' => '#F35A00'  
 	]]//end attachments
 ];
+}
+
+########################################################################################################################################################
+
+
+
+########################################################################################################################################################
       
 //Initiate cURL.
 $ch = curl_init($responseurl);

@@ -8,7 +8,7 @@ $json = file_get_contents($stats);
 $data = json_decode($json,true);
 $tocomplete = 0;
 $index = 0;
-$todaysdate=date('Ymd');
+$todaysdate=date('Ymd_h:i:s');
 
 foreach ($data['users'] as $user) {
 	++$index;
@@ -20,12 +20,14 @@ foreach ($data['users'] as $user) {
 
 if ($tocomplete==1) {
 	$data['users'][$match]['numberofhack']=$data['users'][$match]['numberofhack']+1;
-	array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=>'text'));
+	array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=>'blabla'));
 }else{
 	array_push($data['users'], array('id' => 'new id', 'username' => 'test username', 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> 'test date', 'associatedtext' => 'test associated text'))));
 }
 
-print_r($data);
+foreach ($data['users'] as $user) {
+	$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
+}
 
 unset($file);//prevent memory leaks for large json.
 //save the file
