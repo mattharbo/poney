@@ -37,9 +37,11 @@ $todaysdate=date('Ymd_h:i:s');
 	file_put_contents('./hnG9yd4m1yl4nZM0SZjz3uzl.json',json_encode($data));
 	unset($data);//release memory
 
-	foreach ($data['users'] as $user) {
-		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
+	foreach ($data['users'] as $user2) {
+		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
 	}
+
+	echo $concattext;
 
 	$jsonData = [
 	"response_type" => "in_channel",//if you want to set this message to private
