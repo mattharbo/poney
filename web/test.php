@@ -27,11 +27,13 @@ if ($tocomplete==1) {
 
 // print_r($data['users']);
 
-foreach ($data['users'] as $user2) {
-		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
-	}
+echo $data['users'][0]['username'];
 
-echo $concattext;
+// foreach ($data['users'] as $user2) {
+// 		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
+// 	}
+
+// echo $concattext;
 
 unset($file);//prevent memory leaks for large json.
 //save the file
