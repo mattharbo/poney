@@ -7,9 +7,8 @@ $username=$_POST["user_name"];
 $userid=$_POST["user_id"];
 $text = $_POST['text'];
 $champagne = 0;
-$concattext="Standing : \n";
 
-if ($token!="") {
+if ($token=="RyidNn4XpCVPv1IJE2GwA77x") {
 
 
 ########################################################################################################################################################
