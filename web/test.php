@@ -39,7 +39,7 @@ foreach ($data['users'] as $user2) {
 }
 
 if ($champagne ==1) {
-	$concattext = ":champagne:";
+	$concattext = ":champagne: ";
 }
 
 foreach ($arraytosort as $key => $value) {
