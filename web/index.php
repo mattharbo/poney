@@ -35,9 +35,16 @@ $todaysdate=date('Ymd_h:i:s');
 		array_push($data['users'], array('id' => $userid, 'username' => $username, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => $text))));
 	}
 
-	foreach ($data['users'] as $user) {
-		$concattext=$concattext.($user['username']." ".$user['numberofhack']."\n");
+	$arraytosort=array();
+
+	foreach ($data['users'] as $user2) {
+		$arraytosort[$user2['username']] = $user2['numberofhack'];
+		arsort($arraytosort);
 	}
+
+	foreach ($arraytosort as $key => $value) {
+			$concattext=$concattext.($key." ".$value."\n");
+		}
 
 	unset($file);//prevent memory leaks for large json.
 	file_put_contents($stats,json_encode($data));//save the file

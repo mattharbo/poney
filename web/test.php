@@ -1,6 +1,6 @@
 <?
 
-$newhackedname="MHA";
+$newhackedname="eric";
 
 $stats = "./test.json";
 
@@ -25,13 +25,18 @@ if ($tocomplete==1) {
 	array_push($data['users'], array('id' => 'x', 'username' => $newhackedname, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => 'x'))));
 }
 
-print_r($data['users']);
+$arraytosort=array();
 
-// foreach ($data['users'] as $user2) {
-// 		$concattext=$concattext.($user2['username']." ".$user2['numberofhack']."\n");
-// 	}
+foreach ($data['users'] as $user2) {
+	$arraytosort[$user2['username']] = $user2['numberofhack'];
+	arsort($arraytosort);
+}
 
-// echo $concattext;
+foreach ($arraytosort as $key => $value) {
+		$concattext=$concattext.($key." ".$value."\n");
+	}
+
+echo $concattext;
 
 unset($file);//prevent memory leaks for large json.
 //save the file
