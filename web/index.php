@@ -9,7 +9,7 @@ $text = $_POST['text'];
 $champagne = 0;
 $concattext="Standing : \n";
 
-if ($token=='hnG9yd4m1yl4nZM0SZjz3uzl') {
+if ($token!="") {
 
 
 ########################################################################################################################################################
@@ -50,7 +50,7 @@ $todaysdate=date('Ymd_h:i:s');
 	}
 
 	if ($champagne ==1) {
-		$concattext = ":champagne: *shower !* \n";
+		$concattext = ":champagne: shower ! \n";
 	}
 
 	foreach ($arraytosort as $key => $value) {
@@ -66,7 +66,7 @@ $todaysdate=date('Ymd_h:i:s');
 		"text" => "@channel : ".$username." has been *poneyhacked* :smirk: ".$text,
 		'attachments' => [[
 			'text' => $concattext,
-			'color' => '#AED3FF'  
+			'color' => '#FEC5EF'  
 		]]//end attachments
 	];
 
