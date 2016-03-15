@@ -33,9 +33,9 @@ $todaysdate=date('Ymd_h:i:s');
 	if ($tocomplete==1) {
 		$data['users'][$match]['numberofhack']=$data['users'][$match]['numberofhack']+1;
 
-		if ($data['users'][$match]['numberofhack'] % 3 == 0 and $data['users'][$match]['numberofhack'] != 1) {
-			$champagne = 1;
-		}
+		// if ($data['users'][$match]['numberofhack'] % 3 == 0 and $data['users'][$match]['numberofhack'] != 1) {
+		// 	$champagne = 1;
+		// }
 
 		array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=> $text));
 	}else{
@@ -49,9 +49,9 @@ $todaysdate=date('Ymd_h:i:s');
 		arsort($arraytosort);
 	}
 
-	if ($champagne ==1) {
-		$concattext = ":champagne: ";
-	}
+	// if ($champagne == 1) {
+	// 	$concattext = ":champagne: ";
+	// }
 
 	foreach ($arraytosort as $key => $value) {
 			$concattext=$concattext.($key." ".$value."\n");
