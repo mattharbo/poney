@@ -19,7 +19,6 @@ $json = file_get_contents($stats);
 $data = json_decode($json,true);
 $tocomplete = 0;
 $index = 0;
-$champagne = 0;
 $todaysdate=date('Ymd_h:i:s');
 
 	foreach ($data['users'] as $user) {
@@ -32,11 +31,6 @@ $todaysdate=date('Ymd_h:i:s');
 
 	if ($tocomplete==1) {
 		$data['users'][$match]['numberofhack']=$data['users'][$match]['numberofhack']+1;
-
-		// if ($data['users'][$match]['numberofhack'] % 3 == 0 and $data['users'][$match]['numberofhack'] != 1) {
-		// 	$champagne = 1;
-		// }
-
 		array_push($data['users'][$match]['hackdetails'], array('date'=>$todaysdate, 'associatedtext'=> $text));
 	}else{
 		array_push($data['users'], array('id' => $userid, 'username' => $username, 'numberofhack'=>'1', 'hackdetails' => array(array('date'=> $todaysdate, 'associatedtext' => $text))));
@@ -48,10 +42,6 @@ $todaysdate=date('Ymd_h:i:s');
 		$arraytosort[$user2['username']] = $user2['numberofhack'];
 		arsort($arraytosort);
 	}
-
-	// if ($champagne == 1) {
-	// 	$concattext = ":champagne: ";
-	// }
 
 	foreach ($arraytosort as $key => $value) {
 			$concattext=$concattext.($key." ".$value."\n");
